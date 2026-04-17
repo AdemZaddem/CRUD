@@ -15,7 +15,7 @@ export async function createNoteController(req,res){
     try {
         const {userId} = req.params
         const {title,content} = req.body
-        const note = await createNote(title,content,userId)
+        const note = await createNote(title,content,parseInt(userId))
         res.status(201).json({ message: "Note created" })
     } catch (error) {
         res.status(500).json({ message: error.message });

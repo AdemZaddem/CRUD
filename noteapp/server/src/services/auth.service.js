@@ -6,7 +6,7 @@ export async function getUser(email){
         where:{email}
     })
 }
-
+console.log("prisma inside createUser:", prisma.user)
 export async function createUser(username,email,password){
     const hashPassword = await bcrypt.hash(password,10)
     return prisma.user.create({
