@@ -21,7 +21,13 @@ export async function getUserController(req,res){
         const isMatch = await bcrypt.compare(password,auth.password)
         if(!isMatch) return res.status(400).json(errorMessage)
         
-        res.status(201).json({message:`Welcome back ${auth.username}`})
+        res.status(200).json({message:`Welcome back ${auth.username}`,
+            user:{
+                id:auth.id,
+                username:auth.username,
+                email:auth.email
+            }
+    })
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
