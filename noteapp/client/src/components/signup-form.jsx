@@ -48,6 +48,7 @@ export function SignupForm({
   }
 
   return (
+    <div className="flex justify-center min-h-screen items-center">
     <Card {...props} className={'w-[400px]'}>
       <CardHeader>
           <CardTitle className={'flex justify-center'}><NotebookPen size={48}/></CardTitle>
@@ -92,5 +93,6 @@ export function SignupForm({
         </form>
       </CardContent>
     </Card>
+    </div>
   );
 }
