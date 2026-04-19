@@ -48,7 +48,7 @@ export async function createNote(userId,data){
 
 export async function updateNote(id,data){
     const res = await fetch(`${BASE_URL}/notes/${id}`,{
-        method:"patch",
+        method:"PATCH",
         headers:{'content-type':'application/json'},
         body:JSON.stringify(data)
     })
