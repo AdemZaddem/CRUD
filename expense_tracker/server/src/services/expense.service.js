@@ -1,8 +1,11 @@
 import prisma from "../lib/prisma.js";
 
-export async function getExpense(userId){
+export async function getExpense(userId,filters = {}){
     return prisma.expense.findMany({
-        where:{userId}
+        where:{
+            userId,
+            ...(filters.category && {category:filters.category})
+        }
     })
 }
 

@@ -1,8 +1,11 @@
 import prisma from "../lib/prisma.js";
 
-export async function getIncome(userId){
+export async function getIncome(userId,filters= {}){
     return prisma.income.findMany({
-        where:{userId}
+        where:{
+            userId,
+            ...(filters.source && {source:filters.source})
+        }
     })
 }
 
