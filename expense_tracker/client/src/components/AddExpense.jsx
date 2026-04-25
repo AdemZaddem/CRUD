@@ -23,7 +23,7 @@ import { toast } from "sonner";
 import { createExpenses } from "@/services/api";
 import { useExpenses } from "@/context/ExpensesContext";
 
-function AddExpense() {
+function AddExpense({isAdd,setIsAdd}) {
   const { setExpenses } = useExpenses();
   const [category, setCategory] = useState("");
   const [selectKey, setSelectKey] = useState(0)
@@ -116,7 +116,7 @@ function AddExpense() {
           </div>
           <div className="flex gap-3 mt-4">
             <Button type="submit">Add Expense</Button>
-            <Button type="button" variant="outline">Cancel</Button>
+            <Button type="button" variant="outline" onClick = {()=>setIsAdd(!isAdd)}>Cancel</Button>
           </div>
         </form>
       </CardContent>

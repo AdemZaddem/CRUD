@@ -4,7 +4,7 @@ export async function getExpenseController(req,res){
     try {
         const {userId} = req.params
         const { category } = req.query
-        const expense = await getExpense(parseInt(userId),category)
+        const expense = await getExpense(parseInt(userId),{category})
         return res.status(201).json(expense)
     } catch (error) {
         res.status(500).json({message:error.message})
