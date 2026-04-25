@@ -25,3 +25,26 @@ export async function getUser(email,password){
     if(!res.ok)throw new Error(data.message)
     return data
 }
+
+
+// Expenses
+
+
+export async function getExpenses(userId){
+    const res = await fetch(`${BASE_URL}/user/${userId}/expense`)
+    if(!res.ok)throw new Error('Something went wrong')
+    const data = await res.json()
+
+    return data
+}
+
+
+export async function createExpenses(userId,newExpense){
+    const res = await fetch(`${BASE_URL}/user/${userId}/expense`,{
+        method:"POST",
+        headers:{"content-type":"application/json"},
+        body:JSON.stringify(newExpense)
+    })
+    if (!res.ok) throw new Error("Something went wrong");
+    return await res.json()
+}

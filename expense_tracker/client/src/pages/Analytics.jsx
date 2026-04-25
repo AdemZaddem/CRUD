@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Dashboard() {
+function Analytics() {
   return (
     <div>
       
@@ -8,4 +8,4 @@ function Dashboard() {
   )
 }
 
-export default Dashboard
+export default Analytics

@@ -28,6 +28,7 @@ export function LoginForm({ className, ...props }) {
           id: data.user.id,
           username: data.user.username,
           email: data.user.email,
+          avatar:data.user.avatar
         }),
       );
       navigator('/dashboard')

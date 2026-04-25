@@ -5,14 +5,20 @@ import { Toaster } from "./components/ui/sonner";
 import "./index.css";
 import App from "./App.jsx";
 import { AuthContextProvider } from "./context/AuthContext";
+import { TooltipProvider } from "./components/ui/tooltip";
+import { ExpensesContextProvider } from "./context/ExpensesContext";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
-      <AuthContextProvider>
-        <App />
-        <Toaster />
-      </AuthContextProvider>
+      <ExpensesContextProvider>
+        <TooltipProvider>
+          <AuthContextProvider>
+            <App />
+            <Toaster />
+          </AuthContextProvider>
+        </TooltipProvider>
+      </ExpensesContextProvider>
     </BrowserRouter>
   </StrictMode>,
 );
