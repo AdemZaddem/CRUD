@@ -4,7 +4,7 @@ export async function getIncomeController(req,res){
     try {
         const {userId} = req.params
         const {source} = req.query
-        const income = await getIncome(parseInt(userId),source)
+        const income = await getIncome(parseInt(userId),{source})
         return res.status(201).json(income)
     } catch (error) {
         res.status(500).json({message:error.message})
@@ -15,9 +15,9 @@ export async function getIncomeController(req,res){
 export async function createIncomeController(req,res){
     try {
         const {userId} = req.params
-        const {amount,source} = req.body
+        const {title,amount,source} = req.body
         const date = new Date(req.body.date)
-        const income = await createIncome(amount,source,date,parseInt(userId))
+        const income = await createIncome(title,amount,source,date,parseInt(userId))
         res.status(201).json(income)
     } catch (error) {
         res.status(500).json({message:error.message})

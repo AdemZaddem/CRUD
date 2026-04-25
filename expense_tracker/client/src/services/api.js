@@ -57,3 +57,32 @@ export async function deleteExpense(id){
     if (!res.ok) throw new Error("Something went wrong");
     return await res.json()
 }
+
+
+// Incomes
+export async function getIncomes(userId,filter = 'all'){
+    const url = filter === 'all'? `${BASE_URL}/user/${userId}/income`:`${BASE_URL}/user/${userId}/income?source=${encodeURIComponent(filter)}`
+    const res = await fetch(url)
+    if(!res.ok)throw new Error('Something went wrong')
+    const data = await res.json()
+    
+    return data
+}
+
+export async function deleteIncome(id){
+    const res = await fetch(`${BASE_URL}/income/${id}`,{
+        method:"DELETE"
+    })
+    if (!res.ok) throw new Error("Something went wrong");
+    return await res.json()
+}
+
+export async function createIncome(userId,data){
+     const res = await fetch(`${BASE_URL}/user/${userId}/income`,{
+        method:"POST",
+        headers:{"content-type":"application/json"},
+        body:JSON.stringify(data)
+    })
+    if (!res.ok) throw new Error("Something went wrong");
+    return await res.json()
+}

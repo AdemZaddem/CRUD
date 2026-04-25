@@ -9,9 +9,9 @@ export async function getIncome(userId,filters= {}){
     })
 }
 
-export async function createIncome(amount,source,date,userId){
+export async function createIncome(title,amount,source,date,userId){
     return prisma.income.create({
-        data:{amount,source,date,userId}
+        data:{title,amount,source,date,userId}
     })
 }
 

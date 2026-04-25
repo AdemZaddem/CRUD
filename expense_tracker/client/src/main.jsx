@@ -7,18 +7,21 @@ import App from "./App.jsx";
 import { AuthContextProvider } from "./context/AuthContext";
 import { TooltipProvider } from "./components/ui/tooltip";
 import { ExpensesContextProvider } from "./context/ExpensesContext";
+import { IncomeContextProvider } from "./context/IncomeContext";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
-      <ExpensesContextProvider>
-        <TooltipProvider>
-          <AuthContextProvider>
-            <App />
-            <Toaster />
-          </AuthContextProvider>
-        </TooltipProvider>
-      </ExpensesContextProvider>
+      <IncomeContextProvider>
+        <ExpensesContextProvider>
+          <TooltipProvider>
+            <AuthContextProvider>
+              <App />
+              <Toaster />
+            </AuthContextProvider>
+          </TooltipProvider>
+        </ExpensesContextProvider>
+      </IncomeContextProvider>
     </BrowserRouter>
   </StrictMode>,
 );

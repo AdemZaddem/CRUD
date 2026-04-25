@@ -48,7 +48,7 @@ function Expenses() {
             className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
             size={16}
           />
-          <Input placeholder="Search notes..." className="pl-9 py-5" value = {searchVal} onChange = {(e)=>setSearchVal(e.target.value)}/>
+          <Input placeholder="Search expenses..." className="pl-9 py-5" value = {searchVal} onChange = {(e)=>setSearchVal(e.target.value)}/>
         </div>
 
         <Select
