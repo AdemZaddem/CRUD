@@ -86,3 +86,16 @@ export async function createIncome(userId,data){
     if (!res.ok) throw new Error("Something went wrong");
     return await res.json()
 }
+
+// Profile
+
+export async function updateAvatar(userId,file){
+    const formData = new FormData()
+    formData.append('avatar', file)
+    const res = await fetch(`${BASE_URL}/user/${userId}/avatar`,{
+        method:"PATCH",
+        body:formData
+    })
+    if (!res.ok) throw new Error("Something went wrong");
+    return await res.json()
+}

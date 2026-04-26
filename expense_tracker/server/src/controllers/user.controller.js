@@ -7,9 +7,9 @@ export async function updateAvatarController(req,res){
         const file = req.file.path
         const {id} = req.params
         const update = await updateAvatar(parseInt(id),file)
-        return res.status(200).json({message:"Avatar uploaded"})
+        return res.status(200).json({message:"Avatar uploaded",avatar:update.avatar })
     } catch (error) {
-        res.status(500).json({ message: error.message })
+        res.status(500).json({ message: error.message})
     }
 }
 

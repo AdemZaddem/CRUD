@@ -24,7 +24,7 @@ export async function getUserController(req, res) {
       .status(201)
       .json({
         message: `Welcome back ${auth.username}`,
-        user: { id: auth.id, username: auth.username, email: auth.email,avatar:auth.avatar },
+        user: { id: auth.id, username: auth.username, email: auth.email,avatar:auth.avatar }
       });
   } catch (error) {
     res.status(500).json({ message: error.message });

@@ -33,7 +33,7 @@ function Expenses() {
     <div className="flex flex-col gap-4">
       <header className="flex flex-col gap-4 lg:flex-row lg:justify-between lg:items-center">
         <div>
-          <h1 className="text-3xl">Expenses</h1>
+          <h1 className="text-3xl font-semibold">Expenses</h1>
           <p className="text-gray-400">Manage all your transactions</p>
         </div>
         <Button size="lg" onClick={() => setIsAdd(!isAdd)}>
