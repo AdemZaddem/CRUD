@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Card,
   CardAction,
@@ -12,9 +12,33 @@ import { Label } from "./ui/label";
 import { Input } from "./ui/input";
 import { Button } from "./ui/button";
 import { User, Save, Mail } from "lucide-react";
+import { updateProfile } from "@/services/api";
+import { toast } from "sonner";
+import { useAuth } from "@/context/AuthContext";
 
 function PersonalInfo() {
+    const {logedInUser,setLogedInUser} = useAuth()
     const user = JSON.parse(localStorage.getItem('user'))
+    const [username,setUsername] = useState(user.username)
+    const [email,setEmail] = useState(user.email)
+
+    
+
+    async function handleSave(e){
+        try {
+            e.preventDefault()
+            const res = await updateProfile(user.id,{username,email})
+            const updated = {...user,username,email}
+            setLogedInUser(updated)
+            localStorage.setItem('user',JSON.stringify(updated))
+            console.log(res);
+            
+            toast.success('Profile updated')
+        } catch (error) {
+            toast.error(error.message)
+        }
+    }
+
   return (
     <Card>
       <CardHeader>
@@ -22,7 +46,7 @@ function PersonalInfo() {
         <CardDescription>Update your personal details</CardDescription>
       </CardHeader>
       <CardContent>
-        <form>
+        <form onSubmit={handleSave}>
           <div className="flex flex-col gap-6">
             <div className="grid gap-2">
               <Label htmlFor="username">
@@ -33,8 +57,9 @@ function PersonalInfo() {
                 id="username"
                 type="text"
                 placeholder="Adem Zaddem"
-                value = {user.username}
+                value = {username}
                 required
+                onChange = {(e)=>setUsername(e.target.value)}
               />
             </div>
             <div className="grid gap-2">
@@ -47,7 +72,8 @@ function PersonalInfo() {
                 type="email"
                 required
                 placeholder="you@exemple.com"
-                value = {user.email}
+                value = {email}
+                onChange = {(e)=>setEmail(e.target.value)}
               />
             </div>
             <div>

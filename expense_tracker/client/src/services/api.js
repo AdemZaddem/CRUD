@@ -99,3 +99,24 @@ export async function updateAvatar(userId,file){
     if (!res.ok) throw new Error("Something went wrong");
     return await res.json()
 }
+
+export async function updateProfile(userId,data){
+    const res = await fetch(`${BASE_URL}/user/${userId}/profile`,{
+        method:"PATCH",
+        headers: { "content-type": "application/json" },
+        body:JSON.stringify(data)
+    })
+    if (!res.ok) throw new Error("Something went wrong");
+    return await res.json()
+}
+
+
+export async function updatePassword(userId,data){
+    const res = await fetch(`${BASE_URL}/user/${userId}/password`,{
+        method:"PATCH",
+        headers: { "content-type": "application/json" },
+        body:JSON.stringify(data)
+    })
+    if (!res.ok) throw new Error("Something went wrong");
+    return await res.json()
+}
