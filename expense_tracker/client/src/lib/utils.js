@@ -13,3 +13,10 @@ export function formatDate(dateString) {
         year: 'numeric'
     })
 }
+
+export function formatDateV2(dateString) {
+    return new Date(dateString).toLocaleDateString('en-US', {
+        month: 'short',
+        day: 'numeric',
+    })
+}
