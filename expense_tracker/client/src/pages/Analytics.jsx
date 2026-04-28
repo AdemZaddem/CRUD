@@ -1,6 +1,8 @@
 import React from 'react'
 import Spending from '@/components/charts/Spending'
 import CategoryBreakDown from '@/components/charts/CategoryBreakDown'
+import SpendingOver from '@/components/charts/SpendingOver'
+import CategoryInsights from '@/components/charts/CategoryInsights'
 
 function Analytics() {
   return (
@@ -13,6 +15,8 @@ function Analytics() {
         <Spending/>
         <CategoryBreakDown/>
       </div>
+      <SpendingOver/>
+      <CategoryInsights/>
     </div>
   )
 }
